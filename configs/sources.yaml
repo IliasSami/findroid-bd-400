@@ -1,0 +1,26 @@
+androzoo:
+  base_url: https://androzoo.uni.lu
+  download_endpoint: https://androzoo.uni.lu/api/download
+  metadata_endpoint: https://androzoo.uni.lu/api/latest.csv
+  max_concurrent: 20
+  timeout_s: 300
+  retries: 3
+  backoff_base_s: 2.0
+  # Operational benign filter mirrors the original FinDroid design:
+  # market in ('play.google.com',) AND vt_detection == 0.
+  benign_filters:
+    markets:
+      - play.google.com
+    vt_detection_max: 0
+
+malwarebazaar:
+  base_url: https://mb-api.abuse.ch/api/v1
+  timeout_s: 120
+  retries: 3
+  backoff_base_s: 1.5
+  query_hours: 336
+  file_type_android: apk
+
+play_verifier:
+  timeout_s: 30
+  user_agent: FinDroidBD400EducationalResearch

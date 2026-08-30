@@ -1,0 +1,47 @@
+project:
+  name: FinDroid-BD-400
+  version: 1.0.0
+  random_seed: 20260831
+
+dataset:
+  total: 400
+  benign: 240
+  malicious: 160
+
+candidate_pool:
+  benign_min: 330
+  benign_max: 360
+  malicious_min: 220
+  malicious_max: 250
+
+sources:
+  androzoo:
+    enabled: true
+  malwarebazaar:
+    enabled: true
+
+development:
+  mock_sources: true
+  mock_acquisition: true
+  mock_extraction: true
+  allow_real_apks: false
+
+analysis:
+  static: true
+  dynamic: false
+
+security:
+  execute_apks: false
+
+labels:
+  benign_vt_max: 0
+  malicious_vt_min: 4
+  ambiguous_range:
+    min: 1
+    max: 3
+
+output:
+  csv: true
+  parquet: true
+  json: true
+  html_report: true

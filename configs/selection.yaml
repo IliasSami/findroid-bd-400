@@ -1,0 +1,24 @@
+selection:
+  method: quota_diversity
+  priorities:
+    - evidence_quality
+    - fintech_relevance
+    - family_diversity
+    - temporal_diversity
+    - source_diversity
+    - package_diversity
+    - feature_completeness
+
+dedup:
+  sha256: true
+  package_version: true
+  manifest_fingerprint: true
+  certificate_fingerprint: true
+  permission_set_fingerprint: true
+  code_similarity: false  # TLSH/structural dex similarity accepted but not enabled by default
+
+diversity:
+  malign_families_desired: 12
+  benign_categories_desired: 9
+  max_versions_per_package: 12
+  temporal_spread_target_months: 18

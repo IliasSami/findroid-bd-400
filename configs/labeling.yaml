@@ -1,0 +1,25 @@
+benign_vt_max: 0
+malicious_vt_min: 4
+ambiguous_range: [1, 3]
+
+confidence:
+  A: Strong external evidence (vendor report, documented family, verified IOC/hash)
+  B: Strong automated evidence (high detection, family tools agree, multiple indicators)
+  C: Ambiguous (low detection, family disagreement, weak evidence, incomplete metadata)
+
+policy:
+  c_requires_review: true
+  no_guess_instead_of_review: true
+
+fintech_categories:
+  - banking
+  - mobile_financial_service
+  - mobile_wallet
+  - payment
+  - merchant_payment
+  - digital_banking
+  - microfinance
+  - lending
+  - insurance
+  - investment
+  - fintech_utility

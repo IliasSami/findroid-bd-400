@@ -1,0 +1,26 @@
+family,first_reported,region_focus,primary_techniques,delivery_vector,typical_vt_detection,provenance_note
+Godfather,2021,Global / EU / TR,overlay; accessibility abuse; VNC device takeover,dropper on Play; sideload,high,"Largest family in ThreatIntel-Andro (1,169 samples, 22.8%)"
+TsarBot,2025,Global; 750+ targets,overlay on banking/crypto/social apps,sideload,high,Zimperium 2026: TsarBot+CopyBara+Hook together target >60% of analysed banking/fintech apps
+CopyBara,2023,"IT, ES",overlay; accessibility; vishing-assisted,sideload,high,Zimperium 2026 top-3 by targeted-brand coverage; Cleafy 2023-2025
+Hook,2023,Global; 1000+ targets,overlay; accessibility; WhatsApp worm spread; screenshots,phishing kits; sideload,high,"Zimperium 2026 top-3; Netcraft 2024; targets incl. Coinbase, PayPal, Citibank"
+Anatsa / TeaBot,2020,"EU, UK, US, CZ/SK/SI",overlay; keylogging; accessibility; device-takeover fraud,staged dropper on Play,high,"'Document Viewer - File Reader' dropper published 2025-05-07 reached #4 in Play Tools and ~90,000 installs before removal"
+Octo / Coper / ExobotV2,2021,Global (MaaS),overlay; remote access; screen streaming; keylogging,dropper; smishing,high,ThreatFabric; mean VT detection 42.0 in ThreatIntel-Andro
+Crocodilus,2025,"ES, TR -> expanding",black-screen overlay; accessibility logger; seed-phrase social engineering,dropper bypassing Android 13+ restrictions,medium,ThreatFabric Mar 2025
+ToxicPanda / TgToxic,2024,"IT, PT, HK, ES, PE",accessibility abuse; overlay; OTP interception; fraudulent transfer,sideload,medium,"Cleafy/Bitsight; peaked ~4,500 EU devices"
+SikkahBot,2024,BANGLADESH,SMS/OTP interception; accessibility autofill on bKash/Nagad/DBBL; USSD automation,fake Education Board scholarship APKs via shortened links,low,Cyble CRIL 2025. LOW VT detection. The single highest-priority family for a BD-anchored corpus.
+Mamont,2024,"RU/CIS, global",credential theft; SMS interception,messenger-delivered APK,medium,Kaspersky: 73.5% of banker detections in Q1 2026
+Creduz,2025,Global,credential theft; high build churn,sideload,medium,Kaspersky Q2 2026
+Klopatra,2025,"ES, IT",RAT + banker hybrid; 40 distinct builds,sideload,medium,"Bitsight 2025; ~3,000 devices"
+DoubleTrouble,2025,Global,overlay; keylogging,APK hosted on Discord channels,medium,Bitsight 2025
+Vultur,2021,EU,screen recording; keylogging; remote control,dropper on Play,high,Zimperium active list
+DroidBot,2024,EU,overlay; accessibility; MaaS,sideload,medium,Zimperium 2025
+Cerberus / Alien / ERMAC,2019,Global (leaked source),overlay; SMS; keylogging,sideload; MaaS,high,Leaked source drives many singletons; common AVClass confusion target with Godfather
+PixPirate,2023,BR,overlay; hidden launcher; accessibility,sideload,low,Mean VT detection 20.2 - evasive; static-only detectors miss it
+Fakebank,2016,Global,bank app impersonation; SMS interception,repackaging,low,Mean VT detection 19.2
+AppLite,2024,Global,banker dropper,phishing; fake job apps,medium,Frequently mislabelled as Hqwar by AVClass2/ClarAVy - a label-noise case study
+Rewardsteal,2024,INDIA,reward/loyalty impersonation; SMS theft,smishing,medium,Kaspersky Q3 2025: 88-94% prevalence among attacked IN users
+Coper,2021,TURKEY,overlay; accessibility,dropper,high,Kaspersky Q3 2025: 96.35% of attacked TR users
+Pylcasa,2025,BRAZIL,calculator-disguised banker,Google Play,medium,Kaspersky Q3 2025: 88.25% prevalence among attacked BR users
+GoldPickaxe,2024,"TH, VN",biometric/face data theft to defeat bank auth,sideload; TestFlight (iOS twin),low,Group-IB 2024
+BlankBot,2024,TR,overlay; keylogging; custom injections,sideload,medium,Intel471 / Zimperium 2024
+Errorfather,2024,Global,Cerberus-derived; device-takeover,sideload,medium,Cyble 2024

@@ -1,0 +1,41 @@
+# Environment & secrets — never commit this file
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Data vault / secrets-like content
+database/*.db
+database/*.db-*
+database/
+samples/
+data/raw/
+data/temporary/
+data/releases/*.apk
+
+# Generated release + reporting artifacts (regenerate with `findroid run`)
+data/releases/
+reports/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+
+# Release sanitiser: never allow APK binaries into the worktree
+**/*.apk
+
+# Keep the release metadata but nothing sensitive
+data/releases/*.parquet

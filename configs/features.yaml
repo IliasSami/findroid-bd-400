@@ -1,0 +1,80 @@
+permission_indicators:
+  - INTERNET
+  - ACCESS_NETWORK_STATE
+  - READ_SMS
+  - RECEIVE_SMS
+  - SEND_SMS
+  - READ_PHONE_STATE
+  - CALL_PHONE
+  - READ_CONTACTS
+  - WRITE_EXTERNAL_STORAGE
+  - REQUEST_INSTALL_PACKAGES
+  - SYSTEM_ALERT_WINDOW
+  - RECEIVE_BOOT_COMPLETED
+  - WAKE_LOCK
+  - FOREGROUND_SERVICE
+  - QUERY_ALL_PACKAGES
+  - BIND_ACCESSIBILITY_SERVICE
+
+# Keyword categories used by the strings/fintech extractors.
+# Package identifiers come from the verified seed catalogue, never from here.
+fintech_keywords:
+  otp:
+    - otp
+    - one time pass
+    - verification code
+    - mobile pin
+  sms:
+    - sms
+    - text message
+    - message center
+  ussd:
+    - ussd
+    - "#162#"
+    - "*247#"
+    - "*111#"
+  overlay:
+    - overlay
+    - touch overlay
+    - screen overlay
+  accessibility:
+    - accessibility
+    - accessibilityservice
+    - nodeinfo
+  bank:
+    - bank
+    - banking
+    - bkash
+    - nagad
+    - rocket
+    - dstof
+    - upay
+    - astha
+    - citytouch
+    - cellfin
+  wallet:
+    - wallet
+    - e wallet
+    - mobile wallet
+    - purse
+  payment:
+    - payment
+    - pay
+    - transaction
+    - transfer
+    - merchant qr
+  credential:
+    - credential
+    - password
+    - pin
+    - login
+    - passcode
+
+feature_selection:
+  max_features: 250
+  min_variance_threshold: 0.0
+  max_correlation: 0.95
+  min_document_frequency: 1
+
+selection:
+  max_versions_per_package: 12

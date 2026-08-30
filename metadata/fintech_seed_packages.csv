@@ -1,0 +1,40 @@
+package_id,app_name,organisation,country,tier,subsector,verification_status,evidence
+com.bKash.customerapp,bKash,bKash Ltd.,BD,1,mfs_wallet,confirmed,Play listing 2026-08; note the capital K
+com.bkash.businessapp,bKash Agent,bKash Ltd.,BD,1,mfs_agent,confirmed,Play listing 2026-08
+com.konasl.nagad,Nagad,Nagad Ltd.,BD,1,mfs_wallet,confirmed,Play listing 2026-08
+com.konasl.nagad.agent,Nagad Uddokta,Nagad Ltd.,BD,1,mfs_agent,confirmed,Play listing 2026-08
+com.dbbl.mbs.apps.main,Rocket,Dutch-Bangla Bank PLC,BD,1,mfs_wallet,confirmed,"Play listing; APKMirror cert CN=Dutch Bangla Bank Ltd, L=Dhaka, C=88"
+com.dbbl.nexus.pay,NexusPay,Dutch-Bangla Bank PLC,BD,1,psp_wallet,confirmed,"Play listing; found during verification, not in first draft"
+bd.com.upay.customer,upay,UCB Fintech Company Ltd.,BD,1,mfs_wallet,corrected,first guess com.upay.bd was WRONG; Play listing 2026-06
+bd.com.ucb.unet,UCB One,United Commercial Bank,BD,1,bank_retail,confirmed,Play listing; found during verification
+com.ibbl.cellfin,CellFin,Islami Bank Bangladesh PLC,BD,1,bank_retail,corrected,first guess com.islamibankbd.cellfin was WRONG
+com.ibbl.merchant,CellFin Merchant,Islami Bank Bangladesh PLC,BD,1,merchant_pos,confirmed,Play listing; found during verification
+com.bracbank.astha,BRAC Bank Astha,BRAC Bank PLC,BD,1,bank_retail,corrected,first guess com.brac.bracbank.astha was WRONG
+com.thecitybank.citytouch,Citytouch,City Bank PLC,BD,1,bank_retail,corrected,first guess com.citybank.citytouch was WRONG
+com.ebl.skybanking,EBL Skybanking,Eastern Bank PLC,BD,1,bank_retail,confirmed,Play listing 2026-06
+com.mtb.mobilebanking,MTB Smart Banking,Mutual Trust Bank PLC,BD,1,bank_retail,corrected,first guess com.mtb.smart was WRONG
+com.tallykhata,TallyKhata,Progoti Systems,BD,1,sme_ledger,unverified,VERIFY on Play before download
+com.surecash.bd,SureCash,SureCash,BD,1,mfs_wallet,unverified,VERIFY on Play before download
+net.one97.paytm,Paytm,One97 Communications,IN,2,psp_wallet,unverified,widely documented; re-verify
+com.phonepe.app,PhonePe,PhonePe Pvt Ltd,IN,2,psp_wallet,unverified,widely documented; re-verify
+com.google.android.apps.nbu.paisa.user,Google Pay India,Google,IN,2,psp_wallet,unverified,widely documented; re-verify
+in.org.npci.upiapp,BHIM,NPCI,IN,2,interop_rail,unverified,widely documented; re-verify
+com.easypaisa.easypaisapaymentapp,Easypaisa,Telenor Microfinance Bank,PK,2,mfs_wallet,unverified,VERIFY on Play before download
+com.techlogix.mobilinkcustomer,JazzCash,Jazz,PK,2,mfs_wallet,unverified,VERIFY on Play before download
+com.f1soft.esewa,eSewa,F1Soft International,NP,2,mfs_wallet,unverified,VERIFY on Play before download
+com.globe.gcash.android,GCash,Mynt,PH,2,mfs_wallet,unverified,VERIFY on Play before download
+id.dana,DANA,DANA Indonesia,ID,2,mfs_wallet,unverified,VERIFY on Play before download
+com.mservice.momotransfer,MoMo,M_Service,VN,2,mfs_wallet,unverified,VERIFY on Play before download
+com.ascendmoney.trueMoney,TrueMoney,Ascend Money,TH,2,mfs_wallet,unverified,VERIFY on Play before download
+com.paypal.android.p2pmobile,PayPal,PayPal,US,3,psp_wallet,unverified,widely documented; re-verify
+com.transferwise.android,Wise,Wise plc,GB,3,remittance,unverified,VERIFY on Play before download
+com.revolut.revolut,Revolut,Revolut,GB,3,neobank,unverified,VERIFY on Play before download
+com.squareup.cash,Cash App,Block Inc.,US,3,psp_wallet,unverified,widely documented; re-verify
+com.venmo,Venmo,PayPal,US,3,psp_wallet,unverified,widely documented; re-verify
+com.coinbase.android,Coinbase,Coinbase,US,3,crypto_exchange,unverified,widely documented; re-verify
+com.binance.dev,Binance,Binance,MT,3,crypto_exchange,unverified,widely documented; re-verify
+io.metamask,MetaMask,ConsenSys,US,3,crypto_wallet,unverified,widely documented; re-verify
+com.chase.sig.android,Chase Mobile,JPMorgan Chase,US,3,bank_retail,unverified,VERIFY on Play before download
+com.tapatapsend.android,TapTap Send,TapTap Send,US,3,remittance,unverified,named in McAfee 2025 impersonation report; VERIFY
+com.upay2.wallet,UPay Wallet (crypto),UPay (unrelated to BD upay),--,0,crypto_wallet,collision,DIFFERENT ENTITY from Bangladesh upay (bd.com.upay.customer). Brand collision found during verification. Must NOT enter the BD frame.
+com.upay.upayments.mobile,"UPayments (merchant, KW)",UPayments,KW,0,merchant_pos,collision,Third unrelated 'upay' brand. Substring matching on 'upay' returns all three.

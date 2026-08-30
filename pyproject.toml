@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "findroid-bd-400"
+version = "1.0.0"
+description = "Reproducible 400-sample Android fintech malware research dataset pipeline (educational)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "FinDroid-BD 400 project" }]
+dependencies = [
+    "pandas>=2.2,<3",
+    "numpy>=1.26,<3",
+    "scipy>=1.11",
+    "scikit-learn>=1.4",
+    "pyarrow>=15",
+    "pydantic>=2.6",
+    "jinja2>=3.1",
+    "PyYAML>=6.0",
+    "requests>=2.31",
+    "androguard>=4.1.2",
+]
+
+[project.scripts]
+findroid = "findroid.cli.main:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "ruff>=0.5",
+    "mypy>=1.10",
+    "pre-commit>=3.7",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv", "reports", "docs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+exclude = [".venv", "pipeline"]
+
+[[tool.mypy.overrides]]
+module = ["androguard.*"]
+ignore_missing_imports = true
