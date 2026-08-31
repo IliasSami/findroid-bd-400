@@ -44,4 +44,4 @@ def test_env_overrides_switch_mode(cfg, monkeypatch):
     monkeypatch.setenv("FINDROID_MOCK_SOURCES", "0")
     cfg.resolve_env_overrides()
     assert cfg.development.mock_sources is False
-    assert "ANDROZOO_API_KEY" in cfg.missing_credentials()
+    assert "MALWAREBAZAAR_API_KEY" in cfg.missing_credentials()

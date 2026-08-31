@@ -23,6 +23,10 @@ from .base import CheckResult
 
 _VT_HIGH = 28  # (reserved) high-detection families would clear B on VT alone
 
+# Real official-channel sources whose benign-ness is the distribution channel
+# itself (Google Play listing round-trip / the project's own F-Droid repo).
+REAL_BENIGN_SOURCES = {"play_benign", "f_droid_real"}
+
 
 def _evidence_quality(rec: CandidateRecord) -> str:
     e = (rec.evidence or "").lower()
@@ -48,7 +52,13 @@ def verify_malware_evidence(
     vt = rec.vt_detection if rec.vt_detection is not None else -1
     lo, hi = vdetect_window_for(fam.vt_band)
     in_band = lo <= vt <= hi
-    if ev == "vendor_documented" and fam.targets_bd and in_band:
+    # A real MalwareBazaar signature is vendor measurement: the sample is
+    # definitively a member of that family, so the family id + fintech relevance
+    # no longer depend on a VT band.
+    signed = rec.source == "malwarebazaar_real" and bool(rec.suspected_family)
+    if signed:
+        conf = Confidence.A
+    elif ev == "vendor_documented" and fam.targets_bd and in_band:
         conf = Confidence.A
     elif in_band:
         conf = Confidence.B
@@ -60,6 +70,8 @@ def verify_malware_evidence(
         Confidence.B: "detection within expected family band",
         Confidence.C: "ambiguous: detection outside family band or weak evidence",
     }
+    if signed:
+        msgs[Confidence.A] = "real MalwareBazaar signature confirms the family"
     return [
         CheckResult(
             True,
@@ -72,7 +84,35 @@ def verify_malware_evidence(
 
 
 def verify_benign_evidence(rec: CandidateRecord) -> list[CheckResult]:
-    """Benign evidence = catalog listing + zero detections + Play presence."""
+    """Benign evidence = official-channel round-trip or catalog + zero detections."""
+    if rec.source in REAL_BENIGN_SOURCES:
+        if rec.source == "play_benign":
+            if not rec.play_verification_date:
+                roundtrip_checks = [
+                    CheckResult(
+                        False, "unknown", "play_benign candidate has no Play round-trip date"
+                    )
+                ]
+            else:
+                roundtrip_checks = [
+                    CheckResult(
+                        True,
+                        "pass",
+                        f"real APK + official Google Play listing ({rec.play_verification_date})",
+                        meta={"confidence": Confidence.A},
+                    )
+                ]
+            return roundtrip_checks
+        if rec.source == "f_droid_real" and rec.evidence:
+            return [
+                CheckResult(
+                    True,
+                    "pass",
+                    "official F-Droid build round-trip (project's own repository)",
+                    meta={"confidence": Confidence.A},
+                )
+            ]
+
     checks: list[CheckResult] = []
 
     if rec.vt_detection in (None, -1):
@@ -97,6 +137,9 @@ def verify_benign_evidence(rec: CandidateRecord) -> list[CheckResult]:
 
 
 def confidence_from_checks(checks: list[CheckResult]) -> Confidence:
+    for c in checks:
+        if c.status == "pass" and c.meta.get("confidence") == Confidence.A:
+            return Confidence.A
     if any(c.status == "fail" for c in checks):
         return Confidence.C
     if any(c.status == "unknown" for c in checks):

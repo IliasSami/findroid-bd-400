@@ -15,16 +15,25 @@ venv/
 htmlcov/
 
 # Data vault / secrets-like content
-database/*.db
-database/*.db-*
-database/
+# The processed dataset is published: database/findroid.db is a small (5.7MB)
+# research artifact and IS committed. Only raw/large/generated artifacts are
+# excluded below.
 samples/
 data/raw/
 data/temporary/
-data/releases/*.apk
+data/fdroid_benign/
+data/fdroid_tmp/
+data/fdroid_index_v2.json
+data/annotations/
+data/candidates/
+data/features/
+data/validated/
 
-# Generated release + reporting artifacts (regenerate with `findroid run`)
-data/releases/
+# APK binaries are never allowed into the worktree (release sanitiser)
+**/*.apk
+**/*.apk.zip
+
+# Generated reports (regenerate with `findroid run`)
 reports/
 
 # Logs
@@ -33,9 +42,3 @@ logs/
 
 # OS
 .DS_Store
-
-# Release sanitiser: never allow APK binaries into the worktree
-**/*.apk
-
-# Keep the release metadata but nothing sensitive
-data/releases/*.parquet

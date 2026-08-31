@@ -31,6 +31,7 @@ from findroid.sources.mock_candidates import (
     generate_malicious_candidates,
 )
 from findroid.sources.mock_malware import build_family_catalogue
+from findroid.sources.registry import build_source_registry
 from findroid.verification.verify import verify_pending_candidates
 
 PHASES = [
@@ -72,10 +73,10 @@ class Pipeline:
     # ------------------------------------------------------------------ phases
     def phase_init(self) -> list:
         self.db._init_schema()
-        for key in ("mock_play", "mock_malwarebazaar"):
+        for key, source in build_source_registry(self.cfg).items():
             self.db.execute(
-                "INSERT OR IGNORE INTO sources (source_key, kind, display_name, configured) VALUES (?,?,?,?)",
-                (key, key, key, int(not self.cfg.development.mock_sources)),
+                "INSERT OR REPLACE INTO sources (source_key, kind, display_name, configured) VALUES (?,?,?,?)",
+                (key, source.kind, key, 1),
             )
         self.db.commit()
         return ["schema ready", f"db: {self.cfg.db_path}"]
@@ -84,15 +85,42 @@ class Pipeline:
         already = int(self.db.scalar("SELECT COUNT(*) FROM candidates"))
         if already:
             return [f"candidates already present: {already} (resume)"]
-        benign = generate_benign_candidates(self.catalog, self.cfg)
-        mal = generate_malicious_candidates(self.families, self.cfg)
-        for c in benign + mal:
-            self.db.upsert_candidate(c)
+        if self.cfg.development.mock_sources:
+            benign = generate_benign_candidates(self.catalog, self.cfg)
+            mal = generate_malicious_candidates(self.families, self.cfg)
+            for c in benign + mal:
+                self.db.upsert_candidate(c)
+            self.db.commit()
+            return [
+                f"benign candidates: {len(benign)}",
+                f"malicious candidates: {len(mal)}",
+                f"unique sha256: {len({c.sha256 for c in benign + mal})}",
+            ]
+        registry = build_source_registry(self.cfg)
+        discovered = []
+        for key, source in registry.items():
+            try:
+                recs = list(source.discover())
+            except Exception as exc:  # noqa: BLE001
+                print(f"  source {key} discovery failed: {exc}")
+                continue
+            inserted = 0
+            for rec in recs:
+                try:
+                    self.db.upsert_candidate(rec)
+                    inserted += 1
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  drop duplicate/conflict {rec.sha256[:16]} ({exc})")
+            discovered.append((key, inserted))
+            print(f"  source {key}: {inserted} released")
         self.db.commit()
+        sha_b = len(self.db.fetchall("SELECT DISTINCT sha256 FROM candidates WHERE suspected_class='benign'"))
+        sha_m = len(self.db.fetchall("SELECT DISTINCT sha256 FROM candidates WHERE suspected_class='malicious'"))
         return [
-            f"benign candidates: {len(benign)}",
-            f"malicious candidates: {len(mal)}",
-            f"unique sha256: {len({c.sha256 for c in benign + mal})}",
+            "real discovery",
+            ", ".join(f"{k}: {n}" for k, n in discovered),
+            f"distinct benign sha: {sha_b}",
+            f"distinct malicious sha: {sha_m}",
         ]
 
     def phase_verification(self) -> list:
@@ -167,6 +195,8 @@ def main(argv: list[str] | None = None) -> int:
         from findroid.experiments.baseline import main as baseline_main
 
         return baseline_main(argv)
+    if cmd == "fetch-benign":
+        return cmd_fetch_benign(argv)
     if cmd == "run":
         start = "init"
         if argv and argv[0] == "--phase":
@@ -189,6 +219,34 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     print(f"unknown command {cmd!r}")
     return 2
+
+
+def cmd_fetch_benign(argv: list[str]) -> int:
+    """Print the residential-fetch manifest for the confirmed benign catalogue.
+
+    APKPure/APKCombo/APK-Mirror are bot-walled from this machine, so the user
+    downloads the listed APKs on a residential network and drops them (any
+    filename) into ``samples/import/`` — or uses the theZoo/APKPure mobile app.
+    The next real run in ``samples/import/`` picks up whatever is present;
+    missing packages simply produce skipped acquisition rows.
+    """
+    cfg = load_config()
+    catalog = load_benign_seed_catalog(
+        _cfg.PROJECT_ROOT / "metadata" / "fintech_seed_packages.csv"
+    )
+    eligible = sorted(
+        (p for p in catalog.values() if not p.is_synthetic and not p.is_collision),
+        key=lambda p: (p.country, p.package_id),
+    )
+    import_root = cfg.import_root
+    print(f"# benign APK fetch manifest ({len(eligible)} packages)")
+    print(f"# drop each APK into: {import_root}  (name does not matter)")
+    print("# package,app_name,subsector,country,play_url")
+    for p in eligible:
+        url = f"https://play.google.com/store/apps/details?id={p.package_id}"
+        print(f"{p.package_id},{p.app_name},{p.subsector},{p.country},{url}")
+    print("# after downloading: rerun with the real-mode env (see docs/REAL_BUILD_PLAN.md)")
+    return 0
 
 
 if __name__ == "__main__":

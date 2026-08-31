@@ -37,6 +37,12 @@ def _rule_accept_benign_regionally_documented(rec: CandidateRecord, catalog) -> 
     if rec.suspected_class != ClassLabel.BENIGN:
         return None
     evidence_l = (rec.evidence or "").lower()
+    # Real official-channel builds (Google Play round-trip or the project's own
+    # F-Droid repository, with a real APK in samples/import/) are the strongest
+    # benign signal the corpus can hold — the distribution channel documents them.
+    if rec.source in {"play_benign", "f_droid_real"}:
+        if "official" in evidence_l or "f-droid" in evidence_l or "play listing" in evidence_l:
+            return "rule_accept_benign_real_official_channel"
     if "play listing" in evidence_l or "widely documented" in evidence_l or "found during verification" in evidence_l:
         return "rule_accept_benign_documented_brand"
     return None

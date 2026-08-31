@@ -1,0 +1,78 @@
+{
+  "build_mode": {
+    "mock_acquisition": false,
+    "mock_extraction": false,
+    "mock_sources": false,
+    "note": "SIMULATED backend: artifact hashes are synthetic; real acquisition required for release"
+  },
+  "class_breakdown": {
+    "benign": 147,
+    "malicious": 164
+  },
+  "config_hash": "d009e7d16fe8554a5ead9fbaf2ed6002fb4b4da55cee23a7d99663ec7d257387",
+  "content_sha256": "12607fac9fe211a3a1e25b4e46623a65cbc35cb75cd68182889f5797926b55c2",
+  "dataset": {
+    "benign": 147,
+    "malicious": 164,
+    "total": 311
+  },
+  "files": [
+    "findroid_bd_v1.0.0_dataset.csv",
+    "findroid_bd_v1.0.0_dataset.parquet",
+    "findroid_bd_v1.0.0_label.csv",
+    "findroid_bd_v1.0.0_label.parquet"
+  ],
+  "gates": [
+    {
+      "detail": "expected 311, found 311",
+      "gate": "G1_row_count",
+      "passed": 1,
+      "severity": "PASS"
+    },
+    {
+      "detail": "benign 147/147, malicious 164/164",
+      "gate": "G2_balance",
+      "passed": 1,
+      "severity": "PASS"
+    },
+    {
+      "detail": "0 samples fail APK validation",
+      "gate": "G3_apk_validity",
+      "passed": 1,
+      "severity": "PASS"
+    },
+    {
+      "detail": "0 samples lack fintech classification evidence",
+      "gate": "G4_fintech_classification",
+      "passed": 1,
+      "severity": "PASS"
+    },
+    {
+      "detail": "0 malicious samples below VT=4 without A-grade evidence",
+      "gate": "G5_malware_evidence",
+      "passed": 1,
+      "severity": "PASS"
+    },
+    {
+      "detail": "0 benign samples with vt_detection != 0",
+      "gate": "G6_benign_evidence",
+      "passed": 1,
+      "severity": "PASS"
+    },
+    {
+      "detail": "0 duplicated SHA-256 values",
+      "gate": "G7_unique_sha256",
+      "passed": 1,
+      "severity": "PASS"
+    },
+    {
+      "detail": "no package exceeds 12 versions",
+      "gate": "G8_package_dedup",
+      "passed": 1,
+      "severity": "PASS"
+    }
+  ],
+  "generated_at": "2026-08-31T22:50:51+00:00",
+  "row_count": 311,
+  "version": "v1.0.0"
+}

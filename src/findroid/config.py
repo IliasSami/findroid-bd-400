@@ -117,6 +117,16 @@ class AppConfig(BaseModel):
         return Path(configured) if configured else PROJECT_ROOT / "samples"
 
     @property
+    def import_root(self) -> Path:
+        """Residential-network drop box for benign APKs (see REAL_BUILD_PLAN)."""
+        return self.samples_root / "import"
+
+    @property
+    def mal_import_root(self) -> Path:
+        """Manual malicious drop box (e.g. theZoo archives)."""
+        return self.samples_root / "import_malicious"
+
+    @property
     def reports_root(self) -> Path:
         return PROJECT_ROOT / "reports"
 
@@ -159,8 +169,8 @@ class AppConfig(BaseModel):
     def missing_credentials(self) -> list[str]:
         missing: list[str] = []
         if not self.development.mock_sources:
-            if not os.environ.get("ANDROZOO_API_KEY", "").strip():
-                missing.append("ANDROZOO_API_KEY")
+            # AndroZoo is out of scope for this build; the real malignant feeder
+            # is MalwareBazaar (optional capacity: MalShare, theZoo imports).
             if not os.environ.get("MALWAREBAZAAR_API_KEY", "").strip():
                 missing.append("MALWAREBAZAAR_API_KEY")
         return missing
@@ -203,7 +213,7 @@ def load_config(base_dir: Path | None = None) -> AppConfig:
     selection = _read("selection.yaml")
 
     dev = DevelopmentConfig(**project.get("development", {}))
-    mock_extraction = os.environ.get("FINDROID_MOCK_EXTRACTION", "").strip().lower() in {"1", "true", "yes", "on"}
+    mock_extraction = _env_bool("FINDROID_MOCK_EXTRACTION", dev.mock_extraction)
 
     cfg = AppConfig(
         project=ProjectConfig(**project.get("project", {})),
@@ -223,6 +233,5 @@ def load_config(base_dir: Path | None = None) -> AppConfig:
         features=features,
         selection=selection,
     )
-    if mock_extraction:
-        cfg.development.mock_extraction = True
+    cfg.development.mock_extraction = mock_extraction
     return cfg

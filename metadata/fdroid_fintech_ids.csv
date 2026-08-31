@@ -1,0 +1,21 @@
+package_id,app_name,subsector,country,fintech_basis,evidence
+de.schildbach.wallet,Bitcoin Wallet,crypto_wallet,,open-source SPV Bitcoin wallet; official build from F-Droid,Official Schildbach build on F-Droid
+org.electrum.electrum,Electrum,crypto_wallet,,open-source light Bitcoin wallet; official build from F-Droid,Official Electrum build on F-Droid
+org.totschnig.myexpenses,MyExpenses,fintech_utility,,open-source expense tracker; official build from F-Droid,Official MyExpenses build on F-Droid
+com.money.manager.ex,Money Manager Ex,fintech_utility,,open-source finance manager; official build from F-Droid,Official Money Manager Ex build on F-Droid
+io.horizontalsystems.bankwallet,Unstoppable Wallet,crypto_wallet,,open-source multi-coin wallet; official build from F-Droid,Official Unstoppable build on F-Droid
+com.greenaddress.greenbits_android_wallet,GreenWallet,crypto_wallet,,open-source Bitcoin wallet; official build from F-Droid,Official GreenWallet build on F-Droid
+com.gemwallet.android,Gem Wallet,crypto_wallet,,open-source multi-chain wallet; official build from F-Droid,Official Gem build on F-Droid
+co.electriccoin.zcash.foss,Zcash,crypto_wallet,,open-source Zcash wallet; official build from F-Droid,Official Zcash build on F-Droid
+com.boldwallet,Bold Wallet,crypto_wallet,,open-source Bitcoin wallet; official build from F-Droid,Official Bold build on F-Droid
+finance.valet,Valet,fintech_utility,,open-source self-hosted personal finance; official build from F-Droid,Official Valet build on F-Droid
+com.igisw.openmoneybox,Open Money Box,fintech_utility,,open-source personal finance; official build from F-Droid,Official Open Money Box build on F-Droid
+com.openapps.fintrack,FinTrack,fintech_utility,,open-source finance tracker; official build from F-Droid,Official FinTrack build on F-Droid
+com.danilkinkin.buckwheat,Buckwheat,fintech_utility,,open-source extended budget; official build from F-Droid,Official Buckwheat build on F-Droid
+com.goushik.upiwallet,UPI Wallet,mfs_wallet,,open-source UPI payments; official build from F-Droid,Official UPI Wallet build on F-Droid
+com.github.samotari.paynoway,PayNoway,fintech_utility,,open-source payment tool; official build from F-Droid,Official PayNoway build on F-Droid
+cash.p.terminal,Cash P Terminal,fintech_utility,,open-source POS terminal; official build from F-Droid,Official Cash P build on F-Droid
+com.myfinancemate,MyFinanceMate,fintech_utility,,open-source finance manager; official build from F-Droid,Official MyFinanceMate build on F-Droid
+com.ritesh.cashiro,Cashiro,fintech_utility,,open-source expense tracking; official build from F-Droid,Official Cashiro build on F-Droid
+com.pennywiseai.tracker,PennyWise,fintech_utility,,open-source expense tracker; official build from F-Droid,Official PennyWise build on F-Droid
+com.arduia.expense,Expense,fintech_utility,,open-source spend tracker; official build from F-Droid,Official Expense build on F-Droid

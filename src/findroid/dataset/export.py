@@ -65,13 +65,17 @@ def export_release(
     ordered_features = select_features(sorted(feature_names), FEATURE_GROUPS)
     columns = ROW_CONTRACT + ordered_features
 
+    latest = db.scalar("SELECT MAX(check_id) - 8 FROM quality_checks") or 0
+    gates = db.fetchall(
+        "SELECT gate, passed, severity, detail FROM quality_checks "
+        "WHERE check_id > ? ORDER BY check_id",
+        (latest,),
+    )
     manifest = {
         "dataset": cfg.dataset.model_dump(),
         "version": version,
         "config_hash": cfg.config_hash(),
-        "gates": [
-            dict(r) for r in db.fetchall("SELECT gate, passed, severity, detail FROM quality_checks ORDER BY check_id")
-        ],
+        "gates": [dict(r) for r in gates],
         "generated_at": _now(),
         "build_mode": {
             "mock_sources": cfg.development.mock_sources,

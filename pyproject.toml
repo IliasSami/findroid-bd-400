@@ -5,11 +5,31 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "findroid-bd-400"
 version = "1.0.0"
-description = "Reproducible 400-sample Android fintech malware research dataset pipeline (educational)"
+description = "FinDroid-BD: real-data Android fintech & financial-malware research dataset (311 samples: 147 benign fintech + 164 banking-trojan samples) with a reproducible static-analysis pipeline for cybersecurity education and malware research"
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
-authors = [{ name = "FinDroid-BD 400 project" }]
+license = { file = "LICENSE" }
+authors = [{ name = "Ilias Sami", email = "https://github.com/IliasSami" }]
+keywords = [
+    "android malware dataset",
+    "android banking trojan",
+    "fintech malware",
+    "mobile financial malware",
+    "malware family classification",
+    "static analysis",
+    "mobile threat intelligence",
+    "Anatsa",
+    "Cerberus",
+    "ERMAC",
+    "TeaBot",
+    "Hook",
+    "Coper",
+    "Godfather",
+    "Vultur",
+    "mobile money security",
+    "reproducible dataset",
+    "cybersecurity education",
+]
 dependencies = [
     "pandas>=2.2,<3",
     "numpy>=1.26,<3",
@@ -21,6 +41,7 @@ dependencies = [
     "PyYAML>=6.0",
     "requests>=2.31",
     "androguard>=4.1.2",
+    "pyzipper>=0.4.0",
 ]
 
 [project.scripts]

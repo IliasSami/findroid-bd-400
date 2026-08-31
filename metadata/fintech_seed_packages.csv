@@ -38,3 +38,150 @@ com.chase.sig.android,Chase Mobile,JPMorgan Chase,US,3,bank_retail,unverified,VE
 com.tapatapsend.android,TapTap Send,TapTap Send,US,3,remittance,unverified,named in McAfee 2025 impersonation report; VERIFY
 com.upay2.wallet,UPay Wallet (crypto),UPay (unrelated to BD upay),--,0,crypto_wallet,collision,DIFFERENT ENTITY from Bangladesh upay (bd.com.upay.customer). Brand collision found during verification. Must NOT enter the BD frame.
 com.upay.upayments.mobile,"UPayments (merchant, KW)",UPayments,KW,0,merchant_pos,collision,Third unrelated 'upay' brand. Substring matching on 'upay' returns all three.
+de.schildbach.wallet,Bitcoin Wallet,Schildbach,DE,3,crypto_wallet,confirmed,Official Schildbach build on F-Droid; real APK in samples/import/
+org.electrum.electrum,Electrum,Electrum Technologies,DE,3,crypto_wallet,confirmed,Official Electrum build on F-Droid; real APK in samples/import/
+org.totschnig.myexpenses,MyExpenses,Totschnig,DE,3,fintech_utility,confirmed,Official MyExpenses build on F-Droid; real APK in samples/import/
+com.money.manager.ex,Money Manager Ex,MoneyManagerEx,US,3,fintech_utility,confirmed,Official Money Manager Ex build on F-Droid; real APK in samples/import/
+io.horizontalsystems.bankwallet,Unstoppable Wallet,Horizontal Systems,IL,3,crypto_wallet,confirmed,Official Unstoppable build on F-Droid; real APK in samples/import/
+com.greenaddress.greenbits_android_wallet,GreenWallet,Blockstream,AR,3,crypto_wallet,confirmed,Official GreenWallet build on F-Droid; real APK in samples/import/
+com.gemwallet.android,Gem Wallet,Gem,UA,3,crypto_wallet,confirmed,Official Gem build on F-Droid; real APK in samples/import/
+co.electriccoin.zcash.foss,Zcash,Electric Coin Co,US,3,crypto_wallet,confirmed,Official Zcash build on F-Droid; real APK in samples/import/
+com.boldwallet,Bold Wallet,Bold,US,3,crypto_wallet,confirmed,Official Bold build on F-Droid; real APK in samples/import/
+finance.valet,Valet,Valet,CA,3,fintech_utility,confirmed,Official Valet build on F-Droid; real APK in samples/import/
+com.igisw.openmoneybox,Open Money Box,IGISW,GB,3,fintech_utility,confirmed,Official Open Money Box build on F-Droid; real APK in samples/import/
+com.openapps.fintrack,FinTrack,FinTrack,IN,3,fintech_utility,confirmed,Official FinTrack build on F-Droid; real APK in samples/import/
+com.danilkinkin.buckwheat,Buckwheat,Danil Kinkin,RU,3,fintech_utility,confirmed,Official Buckwheat build on F-Droid; real APK in samples/import/
+com.goushik.upiwallet,UPI Wallet,UPI Wallet,IN,3,mfs_wallet,confirmed,Official UPI Wallet build on F-Droid; real APK in samples/import/
+com.github.samotari.paynoway,PayNoway,Samotari,MX,3,fintech_utility,confirmed,Official PayNoway build on F-Droid; real APK in samples/import/
+cash.p.terminal,Cash P Terminal,Cash P Terminal,PH,3,fintech_utility,confirmed,Official Cash P build on F-Droid; real APK in samples/import/
+com.myfinancemate,MyFinanceMate,MyFinanceMate,ZA,3,fintech_utility,confirmed,Official MyFinanceMate build on F-Droid; real APK in samples/import/
+com.ritesh.cashiro,Cashiro,Ritesh,QA,3,fintech_utility,confirmed,Official Cashiro build on F-Droid; real APK in samples/import/
+com.pennywiseai.tracker,PennyWise,PennyWise AI,US,3,fintech_utility,confirmed,Official PennyWise build on F-Droid; real APK in samples/import/
+com.arduia.expense,Expense,Arduia,BR,3,fintech_utility,confirmed,Official Expense build on F-Droid; real APK in samples/import/
+ademar.bitac,BitAC,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/ademar.bitac_8.apk
+app.bitbag,Bag,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/app.bitbag_323.apk
+app.crescentcash.src,Crescent,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/app.crescentcash.src_120.apk
+app.michaelwuensch.bitbanana,BitBanana,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/app.michaelwuensch.bitbanana_80.apk
+app.rapidsplit,RapidSplit,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/app.rapidsplit_40202.apk
+askanimus.arbeitszeiterfassung2,Working Time Account,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/askanimus.arbeitszeiterfassung2_211013.apk
+be.chvp.nanoledger,NanoLedger,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/be.chvp.nanoledger_2026070402.apk
+business.braid.f_wallet,fWallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/business.braid.f_wallet_120.apk
+ch.swissbitcoinpay.checkout,Swiss Bitcoin Pay,,CH,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/ch.swissbitcoinpay.checkout_469004.apk
+co.timsmart.vouchervault,Voucher Vault,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/co.timsmart.vouchervault_29.apk
+com.a4a.g8invoicing,g8,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/com.a4a.g8invoicing_60.apk
+com.amanoteam.kurt,Just Delete Me,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.amanoteam.kurt_19.apk
+com.baluchon.app,Baluchon,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.baluchon.app_13.apk
+com.bily,Bily,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.bily_16.apk
+com.bitcoin.sharedhaven.testnet,SharedHaven,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.bitcoin.sharedhaven.testnet_4.apk
+com.blogspot.e_kanivets.moneytracker,Money Tracker,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.blogspot.e_kanivets.moneytracker_46.apk
+com.bote.app,Bote,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/com.bote.app_23.apk
+com.brentpanther.bitcoinwidget,Simple Crypto Widget,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.brentpanther.bitcoinwidget_347.apk
+com.brentpanther.litecoinwidget,Simple Litecoin Widget,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.brentpanther.litecoinwidget_23.apk
+com.coinerella.peercoin,Peercoin,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.coinerella.peercoin_160.apk
+com.cointrend,CoinTrend,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.cointrend_10304.apk
+com.concealnetwork.concealmobile,Conceal Mobile,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.concealnetwork.concealmobile_55.apk
+com.decred.decredaddressscanner,Decred Address Scanner,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.decred.decredaddressscanner_10.apk
+com.dreautall.waterflyiii,Waterfly III,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.dreautall.waterflyiii_41023.apk
+com.emmanuelmess.simpleaccounting,Simple Accounting,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.emmanuelmess.simpleaccounting_23.apk
+com.erfangholami.solidshare,Solid Share,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.erfangholami.solidshare_403.apk
+com.example.mempal,Mempal,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.example.mempal_20.apk
+com.fiveseven.tabataxtreme,Tabata Xtreme,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.fiveseven.tabataxtreme_9.apk
+com.flasskamp.subz,Subz,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.flasskamp.subz_4.apk
+com.fr.laboussole.track,GaoAndBlaze,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.fr.laboussole.track_50020.apk
+com.georgeyt9769.cardabase,Cardabase,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.georgeyt9769.cardabase_2403.apk
+com.gideontek.phonetrack,PhoneTrack SMS,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.gideontek.phonetrack_2.apk
+com.github.dmitrykouznetsov.softplusoptions,SoftPlus Options,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.github.dmitrykouznetsov.softplusoptions_6002.apk
+com.github.emavgl.piggybankpro,Oinkoin,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.github.emavgl.piggybankpro_7146004.apk
+com.github.saikcaskey.pokertracker,PokerTracker,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.github.saikcaskey.pokertracker_2.apk
+com.gitlab.uak.mobile_paper_wallet,Mobile Paper Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.gitlab.uak.mobile_paper_wallet_102110403.apk
+com.gorunjinian.metrovault,Metro Vault,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.gorunjinian.metrovault_7.apk
+com.greenaddress.abcore,ABCore,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.greenaddress.abcore_77.apk
+com.huntercoles.pokerpayout,PokerPayout,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.huntercoles.pokerpayout_24.apk
+com.invoiceninja.app,Invoice Ninja,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/com.invoiceninja.app_194.apk
+com.isotjs.todosian,Todosian,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.isotjs.todosian_9.apk
+com.jerameeldelosreyes.sushi,Sushi,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.jerameeldelosreyes.sushi_15.apk
+com.kazispin.money_logs,Money Logs,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.kazispin.money_logs_2.apk
+com.komodoplatform.komodowallet,Komodo Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.komodoplatform.komodowallet_2.apk
+com.limecore.nexus,Nexus Command Center,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.limecore.nexus_32.apk
+com.marotoweb.cajuscan_app,CajuScan,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.marotoweb.cajuscan_app_10.apk
+com.michaeltroger.gruenerpass,PDF Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.michaeltroger.gruenerpass_79.apk
+com.mustafacanyucel.fireflyiiishortcuts,Firefly III Shortcuts,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.mustafacanyucel.fireflyiiishortcuts_3.apk
+com.neuronencrypt.app,Neuron Encrypt,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.neuronencrypt.app_5.apk
+com.nickspatties.timeclock,TimeClock,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.nickspatties.timeclock_1.apk
+com.nighthawkapps.wallet.android,Nighthawk,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.nighthawkapps.wallet.android_20216800.apk
+com.nishantboro.splititeasy,Split It Easy,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.nishantboro.splititeasy_1.apk
+com.nvllz.piggsy,Piggsy,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.nvllz.piggsy_5.apk
+com.oriondev.moneywallet,MoneyWallet,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.oriondev.moneywallet_75.apk
+com.pixelpen.whereitwent.stable,Where It Went,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.pixelpen.whereitwent.stable_30000.apk
+com.polyalerts,PolyAlerts,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.polyalerts_14.apk
+com.ripster.sossoldi,Sossoldi,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.ripster.sossoldi_1054.apk
+com.sidhant.wallet,Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.sidhant.wallet_4403.apk
+com.soumikshah.investmenttracker,Plutus,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.soumikshah.investmenttracker_3.apk
+com.starry.greenstash,GreenStash,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.starry.greenstash_440.apk
+com.tkton.wallet,TkTon,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/com.tkton.wallet_120.apk
+com.tombursch.kitchenowl,KitchenOwl,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.tombursch.kitchenowl_124.apk
+com.vermont.possin,LCTerm,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/com.vermont.possin_9.apk
+com.vgorcum.minedmonero,minedmonero,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.vgorcum.minedmonero_2.apk
+com.wagebit.app,WageBit,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/com.wagebit.app_1.apk
+com.xvzan.simplemoneytracker,Simple Money Tracker,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.xvzan.simplemoneytracker_20250704.apk
+com.yash.xpenc,XPENC,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.yash.xpenc_163.apk
+cz.jancejka.spayddecoder,SPAYD dekodér,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/cz.jancejka.spayddecoder_6.apk
+de.bixilon.unithen,UniThen,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.bixilon.unithen_5.apk
+de.blocklink.pigrid,PiGrid Companion,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.blocklink.pigrid_5.apk
+de.box2code.matoid,matoid,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/de.box2code.matoid_2.apk
+de.cloneapps.crypto_prices,Crypto Prices,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/de.cloneapps.crypto_prices_36.apk
+de.cryptobitch.muelli.vouchercalc,Voucher Calc,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.cryptobitch.muelli.vouchercalc_3.apk
+de.dbauer.expensetracker,Expenses,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.dbauer.expensetracker_67.apk
+de.drmaxnix.mfcbalance,MFC Balance,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.drmaxnix.mfcbalance_5.apk
+de.freewarepoint.whohasmystuff,Who Has My Stuff?,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.freewarepoint.whohasmystuff_43.apk
+de.k4ever.k4android,k4android,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.k4ever.k4android_10.apk
+de.koelle.christian.trickytripper,Tricky Tripper,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.koelle.christian.trickytripper_25.apk
+de.php_tech.piggybudget,piggybudget,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/de.php_tech.piggybudget_25.apk
+de.schildbach.wallet_test,Bitcoin Wallet [testnet3],,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/de.schildbach.wallet_test_110400.apk
+de.varengold.activeTAN,activeTAN,,--,3,bank_retail,confirmed,official F-Droid build; real APK in samples/import/de.varengold.activeTAN_69.apk
+dev.maartje.hetsaldo,Het Saldo,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/dev.maartje.hetsaldo_6.apk
+es.jjrh.bikeradar,Bike Radar,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/es.jjrh.bikeradar_24.apk
+eth.brume.wallet,Brume Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/eth.brume.wallet_537.apk
+eu.pretix.pretixscan.droid,pretixSCAN,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/eu.pretix.pretixscan.droid_103.apk
+eu.uwot.fabio.altcoinprices,Altcoin Prices,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/eu.uwot.fabio.altcoinprices_81.apk
+hashengineering.darkcoin.wallet,DashPay Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/hashengineering.darkcoin.wallet_11010205.apk
+hashengineering.groestlcoin.wallet,Groestlcoin Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/hashengineering.groestlcoin.wallet_102002.apk
+hashengineering.groestlcoin.wallet_test,Groestlcoin Wallet TestNet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/hashengineering.groestlcoin.wallet_test_102002.apk
+hisapkitap.com,hisapkitap,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/hisapkitap.com_33.apk
+im.nfc.nfsee,NFSee,,--,3,bank_retail,confirmed,official F-Droid build; real APK in samples/import/im.nfc.nfsee_204003.apk
+im.status.ethereum,Status Legacy,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/im.status.ethereum_2025102415.apk
+info.tangential.cone,cone,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/info.tangential.cone_28.apk
+io.github.dorumrr.happytaxes,HappyTaxes,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/io.github.dorumrr.happytaxes_10.apk
+io.github.herrerad85.tallybook,Tallybook,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/io.github.herrerad85.tallybook_84.apk
+io.github.pitonite.exch_cx,eXch.,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/io.github.pitonite.exch_cx_18000.apk
+it.rfmariano.denaro,Denaro,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/it.rfmariano.denaro_20717912.apk
+me.hackerchick.catima,Catima,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/me.hackerchick.catima_1002.apk
+mobi.boilr.boilr,Boilr,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/mobi.boilr.boilr_9.apk
+net.adhikary.mrtbuddy,MRT Buddy,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/net.adhikary.mrtbuddy_24.apk
+net.clench.wallet,Clench,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/net.clench.wallet_326.apk
+net.eneiluj.moneybuster,MoneyBuster,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/net.eneiluj.moneybuster_40.apk
+net.ktnx.mobileledger,MoLe,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/net.ktnx.mobileledger_58.apk
+net.taler.merchantpos,Taler POS,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/net.taler.merchantpos_25.apk
+net.taler.wallet.fdroid,Taler Wallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/net.taler.wallet.fdroid_889.apk
+nz.eloque.foss_wallet,FossWallet,,--,3,mfs_wallet,confirmed,official F-Droid build; real APK in samples/import/nz.eloque.foss_wallet_119.apk
+nz.eloque.quits,Quits,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/nz.eloque.quits_13.apk
+org.asafonov.monly,Monly,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/org.asafonov.monly_53.apk
+com.codesail.market_monk,MarketMonk,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.codesail.market_monk_803.apk
+com.github.muellerma.prepaidbalance,Prepaid Balance,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.github.muellerma.prepaidbalance_40.apk
+com.github.premnirmal.tickerwidget,Today Stocks,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.github.premnirmal.tickerwidget_400100003.apk
+com.offlinecurrencyconverter.app,Offline Currency Converter,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.offlinecurrencyconverter.app_6.apk
+com.simonimal.minimalcurconv,Minimal Currency Converter,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.simonimal.minimalcurconv_1.apk
+com.willchan.simple_random_stock,Simple Random Stock,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/com.willchan.simple_random_stock_3.apk
+net.kaltner.LoanPro,LoanPro,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/net.kaltner.LoanPro_10002.apk
+net.yukh.currency,Currency Converter,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/net.yukh.currency_60800.apk
+org.billthefarmer.currency,Currency,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/org.billthefarmer.currency_158.apk
+org.eagsoftware.basiccashflow,BasicCashFlow,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/org.eagsoftware.basiccashflow_3.apk
+org.ebur.debitum,Debitum,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/org.ebur.debitum_23.apk
+org.encointer.wallet,Encointerwallet,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/org.encointer.wallet_915.apk
+org.juanro.autumandu,Autu Mandu,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/org.juanro.autumandu_604.apk
+org.ligi.passandroid,PassAndroid,,--,3,psp_wallet,confirmed,official F-Droid build; real APK in samples/import/org.ligi.passandroid_373.apk
+org.magicgrants.skylight,Skylight Wallet,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/org.magicgrants.skylight_4023.apk
+org.secuso.privacyfriendlyfinancemanager,Finance Manager,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/org.secuso.privacyfriendlyfinancemanager_100.apk
+org.veilproject.wallet,Veil Wallet,,--,3,crypto_wallet,confirmed,official F-Droid build; real APK in samples/import/org.veilproject.wallet_273.apk
+ua.com.radiokot.lnaddr2invoice,LN Address to Invoice,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/ua.com.radiokot.lnaddr2invoice_8.apk
+xyz.hisname.fireflyiii,Photuris III,,--,3,fintech_utility,confirmed,official F-Droid build; real APK in samples/import/xyz.hisname.fireflyiii_112.apk

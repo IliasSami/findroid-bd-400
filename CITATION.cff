@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this dataset or pipeline in research, please cite it as follows."
+title: "FinDroid-BD 400: Android FinTech and Financial Malware Research Dataset"
+abstract: >-
+  A reproducible, real-data research dataset of 311 validated Android apps spanning 147 benign
+  fintech applications (crypto wallets, mobile-money/PSP wallets, bank-retail fintech, and
+  fintech-utility apps from F-Droid official builds) and 164 real Android banking-trojan samples
+  (Cerberus, Alien, ERMAC, Hook, Coper, CopyBara, Octo, Anatsa/TeaBot, Crocodilus, ExobotV2,
+  Godfather, Vultur, ToxicPanda/TgToxic) sourced from the public MalwareBazaar research repository.
+  Each sample carries a verified SHA-256, validated APK, fintech/family labels, 66 static-extracted
+  feature columns, and full provenance. Built for cybersecurity education and Android malware
+  analysis research.
+type: dataset
+keywords:
+  - android malware dataset
+  - android banking trojan
+  - fintech malware
+  - mobile financial malware
+  - static analysis
+  - malware family classification
+  - mobile threat intelligence
+  - Anatsa
+  - Cerberus
+  - ERMAC
+  - TeaBot
+  - Hook
+  - Coper
+  - Godfather
+  - Vultur
+  - mobile money security
+  - reproducible dataset
+  - cybersecurity education
+authors:
+  - family-names: Sami
+    given-names: Ilias
+    orcid: https://github.com/IliasSami
+date-released: "2026-09-01"
+license: MIT
+version: 1.0.0

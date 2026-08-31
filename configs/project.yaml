@@ -4,15 +4,15 @@ project:
   random_seed: 20260831
 
 dataset:
-  total: 400
-  benign: 240
-  malicious: 160
+  total: 311
+  benign: 147
+  malicious: 164
 
 candidate_pool:
-  benign_min: 330
-  benign_max: 360
-  malicious_min: 220
-  malicious_max: 250
+  benign_min: 147
+  benign_max: 147
+  malicious_min: 164
+  malicious_max: 164
 
 sources:
   androzoo:

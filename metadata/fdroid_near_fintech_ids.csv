@@ -1,0 +1,20 @@
+package_id,subsector,country,evidence
+com.codesail.market_monk,fintech_utility,US,near-fintech: stock/portfolio tracker on F-Droid
+com.github.muellerma.prepaidbalance,fintech_utility,DE,near-fintech: prepaid mobile balance tracker on F-Droid
+com.github.premnirmal.tickerwidget,fintech_utility,US,near-fintech: stock market ticker widget on F-Droid
+com.offlinecurrencyconverter.app,fintech_utility,US,near-fintech: offline currency converter on F-Droid
+com.simonimal.minimalcurconv,fintech_utility,US,near-fintech: minimal currency converter on F-Droid
+com.willchan.simple_random_stock,fintech_utility,US,near-fintech: stock index picker on F-Droid
+net.kaltner.LoanPro,fintech_utility,DE,near-fintech: loan/mortgage calculator on F-Droid
+net.yukh.currency,fintech_utility,RU,near-fintech: currency converter with rates on F-Droid
+org.billthefarmer.currency,fintech_utility,GB,near-fintech: currency converter on F-Droid
+org.eagsoftware.basiccashflow,fintech_utility,US,near-fintech: personal cashflow tracker on F-Droid
+org.ebur.debitum,fintech_utility,DE,near-fintech: lent-money/IOU tracker on F-Droid
+org.encointer.wallet,crypto_wallet,CH,near-fintech: Encointer blockchain wallet on F-Droid
+org.juanro.autumandu,fintech_utility,BR,near-fintech: vehicle income/expense tracker on F-Droid
+org.ligi.passandroid,psp_wallet,DE,near-fintech: Passbook/wallet passes viewer on F-Droid
+org.magicgrants.skylight,crypto_wallet,US,near-fintech: Monero light wallet on F-Droid
+org.secuso.privacyfriendlyfinancemanager,fintech_utility,DE,near-fintech: open-source finance manager on F-Droid
+org.veilproject.wallet,crypto_wallet,US,near-fintech: Veil crypto wallet on F-Droid
+ua.com.radiokot.lnaddr2invoice,fintech_utility,UA,near-fintech: Lightning address to invoice tool on F-Droid
+xyz.hisname.fireflyiii,fintech_utility,US,near-fintech: Firefly III personal finance client on F-Droid

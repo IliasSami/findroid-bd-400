@@ -147,7 +147,18 @@ def run_extraction_for_all(
     *,
     limit: int | None = None,
 ) -> dict:
-    """Extract features for all samples in the current staging state."""
+    """Extract features for all samples in the current staging state.
+
+    ``cfg.development.mock_extraction`` selects the simulated backend (reads the
+    ``.mockapk.json`` descriptor) or the real backend (androguard on a genuine
+    APK). The emission schema is identical for both.
+    """
+    from . import static_real
+
+    real = not cfg.development.mock_extraction and static_real.available()
+    version = static_real.REAL_EXTRACTOR_VERSION if real else EXTRACTOR_VERSION
+    schema_version = static_real.FEATURE_SCHEMA_VERSION if real else FEATURE_SCHEMA_VERSION
+
     rows = db.fetchall(
         "SELECT * FROM samples WHERE feature_extraction_status IN ('NOT_RUN','FAILED')"
         + (" LIMIT " + str(int(limit)) if limit else "")
@@ -155,7 +166,7 @@ def run_extraction_for_all(
     tally: dict = {"success": 0, "partial": 0, "failed": 0}
     for row in rows:
         sample = SampleRecord(**dict(row))
-        artifact = _locate_artifact(cfg, sample)
+        artifact = _locate_artifact(cfg, sample, real=real)
         if artifact is None:
             status = ExtractionStatus.FAILED
             db.add_extraction_run(
@@ -164,8 +175,8 @@ def run_extraction_for_all(
                     sample_id=sample.sample_id,
                     sha256=sample.sha256,
                     status=status,
-                    extractor_version=EXTRACTOR_VERSION,
-                    feature_schema_version=FEATURE_SCHEMA_VERSION,
+                    extractor_version=version,
+                    feature_schema_version=schema_version,
                     error_code="NO_ARTIFACT",
                     error_message="artifact descriptor not found",
                     created_at="",
@@ -177,7 +188,7 @@ def run_extraction_for_all(
                     sample_id=sample.sample_id,
                     sha256=sample.sha256,
                     error_code="NO_ARTIFACT",
-                    message="missing artifact descriptor",
+                    message="missing artifact descriptor" if not real else "missing APK in vault",
                 )
             )
             tally["failed"] += 1
@@ -185,9 +196,14 @@ def run_extraction_for_all(
 
         try:
             count = 0
-            for fe in extract_one(db, cfg, sample, artifact=artifact):
-                db.add_feature(fe)
-                count += 1
+            if real:
+                for fe in static_real.extract_real_one(sample, artifact):
+                    db.add_feature(fe)
+                    count += 1
+            else:
+                for fe in extract_one(db, cfg, sample, artifact=artifact):
+                    db.add_feature(fe)
+                    count += 1
             status = ExtractionStatus.SUCCESS if count > 0 else ExtractionStatus.PARTIAL
         except Exception as exc:  # noqa: BLE001
             status = ExtractionStatus.FAILED
@@ -211,8 +227,8 @@ def run_extraction_for_all(
                 sample_id=sample.sample_id,
                 sha256=sample.sha256,
                 status=status,
-                extractor_version=EXTRACTOR_VERSION,
-                feature_schema_version=FEATURE_SCHEMA_VERSION,
+                extractor_version=version,
+                feature_schema_version=schema_version,
                 feature_count=count,
                 created_at="",
             )
@@ -224,10 +240,17 @@ def run_extraction_for_all(
     return tally
 
 
-def _locate_artifact(cfg: AppConfig, sample: SampleRecord) -> Path | None:
-    rel = Path(sample.class_label.value) / sample.sha256[:2] / (sample.sha256 + ".mockapk.json")
-    p = cfg.samples_root / rel
-    return p if p.exists() else None
+def _locate_artifact(cfg: AppConfig, sample: SampleRecord, *, real: bool = False) -> Path | None:
+    if not real:
+        rel = Path(sample.class_label.value) / sample.sha256[:2] / (sample.sha256 + ".mockapk.json")
+        p = cfg.samples_root / rel
+        return p if p.exists() else None
+    for suffix in (".apk", ".apk.zip"):
+        rel = Path(sample.class_label.value) / sample.sha256[:2] / (sample.sha256 + suffix)
+        p = cfg.samples_root / rel
+        if p.exists():
+            return p
+    return None
 
 
 _STRING_FLAG_GROUPS = {
