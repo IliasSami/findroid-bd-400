@@ -24,7 +24,7 @@ from ..models import (
     SampleRecord,
 )
 
-EXTRACTOR_VERSION = "0.2.0-mock"
+EXTRACTOR_VERSION = "0.3.0-mock"
 FEATURE_SCHEMA_VERSION = "1.0.0"
 
 
@@ -58,12 +58,10 @@ def extract_one(
             extraction_status=ExtractionStatus.SUCCESS,
         )
 
-    # static_manifest sdk / cert / dex metrics (derived aggregations)
+    # static_manifest sdk / dex / apk metrics (derived aggregations)
     yields = [
         ("sdk.min", payload.get("min_sdk")),
         ("sdk.target", payload.get("target_sdk")),
-        ("cert.cn", payload.get("cert", {}).get("subject_cn")),
-        ("cert.digest", payload.get("cert", {}).get("digest")),
         ("dex.classes", payload.get("dex", {}).get("classes_dx")),
         ("dex.methods", payload.get("dex", {}).get("methods_dx")),
         ("apk.size_bytes", payload.get("apk_size_bytes")),
@@ -79,6 +77,27 @@ def extract_one(
             value=value,
             dtype="int" if isinstance(value, int) else "str",
             group="static_manifest",
+            **base_env,
+            extraction_status=ExtractionStatus.SUCCESS,
+        )
+
+    # static_cert group: certificate identity + digest (schema-declared group)
+    cert_items = [
+        ("cert.cn", payload.get("cert", {}).get("subject_cn")),
+        ("cert.org", payload.get("cert", {}).get("org")),
+        ("cert.issuer_cn", payload.get("cert", {}).get("issuer_cn")),
+        ("cert.digest", payload.get("cert", {}).get("digest")),
+    ]
+    for name, value in cert_items:
+        if value is None:
+            continue
+        yield FeatureRecord(
+            sample_id=sample.sample_id,
+            sha256=sha_full,
+            feature_name=name,
+            value=value,
+            dtype="str",
+            group="static_cert",
             **base_env,
             extraction_status=ExtractionStatus.SUCCESS,
         )

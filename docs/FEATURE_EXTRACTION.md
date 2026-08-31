@@ -2,7 +2,7 @@
 
 > Scope honesty: the current build runs a **simulated static extractor**
 > (`src/findroid/extraction/extract.py`,
-> `EXTRACTOR_VERSION = "0.2.0-mock"`). It reads the simulated artifact
+> `EXTRACTOR_VERSION = "0.3.0-mock"`). It reads the simulated artifact
 > descriptor (`.mockapk.json`) in `samples/` and emits feature rows; it does
 > not parse real APK bytes. Every feature row records `origin` and SIMULATED
 > markers so simulated rows can be cleanly excluded from any downstream
@@ -16,12 +16,13 @@ Declared order (matches the FinDroid schema contract):
 static_manifest, static_code, static_cert, fintech, dynamic
 ```
 
-**Implemented today:** `static_manifest` (permissions + sdk/cert/dex/apk
-metrics) and `static_code` (string-indicator flags + counts). `static_cert`
-and `dynamic` are declared groups with no dedicated extractor walk; the cert
-features emitted today are filed under `static_manifest` (see
-`AGENT_UNDERSTANDING.md`, "known inconsistencies"). Export output is ordered
-by `select_features(names, FEATURE_GROUPS)` — group order, then feature name.
+**Implemented today:** `static_manifest` (permissions + sdk/dex/apk metrics),
+`static_code` (string-indicator flags + counts), and `static_cert`
+(certificate identity + digest). `dynamic` is a declared group with no
+extractor walk — dynamic detonation is not implemented
+(`analysis.dynamic: false`, `security.execute_apks: false`). Export output is
+ordered by `select_features(names, FEATURE_GROUPS)` — group order, then
+feature name.
 
 ## Feature catalogue (mock extractor)
 
@@ -30,12 +31,14 @@ by `select_features(names, FEATURE_GROUPS)` — group order, then feature name.
 | `perm.<permission>` | int (1) | static_manifest | simulated |
 | `sdk.min` | int | static_manifest | simulated |
 | `sdk.target` | int | static_manifest | simulated |
-| `cert.cn` | str | static_manifest | simulated |
-| `cert.digest` | str | static_manifest | simulated |
 | `dex.classes` | int | static_manifest | simulated |
 | `dex.methods` | int | static_manifest | simulated |
 | `apk.size_bytes` | int | static_manifest | simulated |
 | `dex.date` | str | static_manifest | simulated |
+| `cert.cn` | str | static_cert | simulated |
+| `cert.org` | str | static_cert | simulated |
+| `cert.issuer_cn` | str | static_cert | simulated |
+| `cert.digest` | str | static_cert | simulated |
 | `str_ind.otp` | int (0/1) | static_code | derived |
 | `str_ind.sms` | int (0/1) | static_code | derived |
 | `str_ind.ussd` | int (0/1) | static_code | derived |

@@ -46,7 +46,7 @@ Resume from any phase with `--phase <phase>`, e.g.
 ## Outputs
 
 ```
-data/releases/<version>/        dataset CSV + label CSV + manifest (content-hashed)
+data/releases/<version>/        dataset CSV + parquet, label CSV + parquet, manifest (content-hashed)
 reports/                        pipeline reports + baseline JSON/CSV (simulated sanity metrics)
 database/findroid.db            full provenance chain (SQLite, 13 tables)
 samples/                        simulated artifact descriptors (.mockapk.json)

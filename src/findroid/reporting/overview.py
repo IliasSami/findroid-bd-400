@@ -1,12 +1,14 @@
 """Reporting: distribution overviews + human-readable summary.
 
 Writes stable artifacts under ``reports/`` that let any reader reproduce the
-corpus inventory without re-running the pipeline.
+corpus inventory without re-running the pipeline. ``output.html_report`` adds a
+self-contained ``pipeline_summary.html`` view of the same data.
 """
 
 from __future__ import annotations
 
 import csv
+import html
 from collections import Counter
 from pathlib import Path
 
@@ -116,7 +118,82 @@ def render_reports(
     summary_path = reports_root / "pipeline_summary.md"
     summary_path.write_text(summary, encoding="utf-8")
 
-    return {"distributions": dist_path, "review_queue": reports_root / "review_queue.csv", "summary": summary_path}
+    paths = {
+        "distributions": dist_path,
+        "review_queue": reports_root / "review_queue.csv",
+        "summary": summary_path,
+    }
+
+    if cfg.output.html_report:
+        html_path = reports_root / "pipeline_summary.html"
+        html_path.write_text(
+            _render_html_summary(
+                dataset=cfg.dataset,
+                active=len(active),
+                all_samples=len(all_samples),
+                statuses=statuses,
+                distributions=out,
+                gates=gates,
+            ),
+            encoding="utf-8",
+        )
+        paths["summary_html"] = html_path
+
+    return paths
+
+
+def _render_html_summary(*, dataset, active, all_samples, statuses, distributions, gates) -> str:
+    def esc(value) -> str:
+        return html.escape(str(value))
+
+    table = []
+    for name, items in distributions.items():
+        table.append(f"<h3>{esc(name)}</h3>")
+        table.append("<table>")
+        for item in items:
+            keys = list(item.keys())
+            key = item[keys[0]]
+            value = ", ".join(f"{k}={v}" for k, v in item.items() if k != keys[0])
+            table.append(f"<tr><td>{esc(key)}</td><td>{esc(value)}</td></tr>")
+        table.append("</table>")
+
+    gate_rows = "\n".join(
+        f"<tr><td>{esc(g['gate'])}</td><td>{esc(g['severity'])}</td></tr>" for g in gates
+    )
+    return f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FinDroid-BD 400 — pipeline summary</title>
+<style>
+  body {{ font-family: -apple-system, system-ui, sans-serif; margin: 2rem auto; max-width: 60rem; line-height: 1.5; }}
+  h1, h2, h3 {{ color: #1a1a1a; }}
+  table {{ border-collapse: collapse; margin: 0.25rem 0 1rem; }}
+  td, th {{ border: 1px solid #d0d0d0; padding: 0.25rem 0.6rem; font-size: 0.9rem; }}
+  th {{ background: #f2f2f2; }}
+  .muted {{ color: #666; font-size: 0.85rem; }}
+</style>
+</head>
+<body>
+<h1>FinDroid-BD 400 — pipeline summary</h1>
+<p class="muted">Engineering validation artifacts. This corpus is SIMULATED; do
+not present these numbers as empirical results (MASTER prompt, Section 62).</p>
+<ul>
+<li>configured total: {esc(dataset.total)} (benign {esc(dataset.benign)} / malicious {esc(dataset.malicious)})</li>
+<li>active release rows: {esc(active)}</li>
+<li>candidates registered: {esc(all_samples)}</li>
+<li>verification status mix: {esc(dict(sorted(statuses.items())))}</li>
+</ul>
+<h2>Distributions</h2>
+{''.join(table)}
+<h2>Quality gates</h2>
+<table>
+<tr><th>gate</th><th>severity</th></tr>
+{gate_rows}
+</table>
+</body>
+</html>
+"""
 
 
 def _vt_bin(vt) -> str:

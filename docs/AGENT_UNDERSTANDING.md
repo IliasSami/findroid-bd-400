@@ -82,15 +82,14 @@ Static-first. Feature groups (declared order): `static_manifest`,
 `static_code`, `static_cert`, `fintech`, `dynamic`.
 
 **Implementation reality (stated):** in the current mock build the extractor
-emits `static_manifest` features (manifest-derived and derived aggregations;
-simulated artifact descriptors) and `fintech` features. `static_code` and
-`static_cert` exist as declared groups exactly like the schema contract
-requires, `static_cert` features are filed under the `static_manifest` group
-by the extractor (schema-name-only group), and `dynamic` is schema-name-only
-— no dynamic detonation is implemented (`analysis.dynamic: false`,
-`security.execute_apks: false`). Every feature row records its `origin` as
-`measured | derived | simulated` and `source_tool`, so downstream users can
-filter by provenance.
+emits `static_manifest` features (permissions + sdk/dex/apk metrics),
+`static_code` (string indicators + counts), and `static_cert` (certificate
+identity + digest), all from simulated artifact descriptors. `dynamic` exists
+as a declared group exactly like the schema contract requires but has no
+extractor walk — no dynamic detonation is implemented (`analysis.dynamic:
+false`, `security.execute_apks: false`). Every feature row records its
+`origin` as `measured | derived | simulated` and `source_tool`, so downstream
+users can filter by provenance.
 
 ## Duplicate policy
 
@@ -129,9 +128,11 @@ Each phase maps to `pipeline/{01..10}_*.py`; resume via `--phase <name>`.
 
 - SQLite provenance database `database/findroid.db` (13 tables).
 - Release package under `data/releases/<version>/`:
-  `findroid_bd_<version>_dataset.csv`, `findroid_bd_<version>_label.csv`,
+  `findroid_bd_<version>_dataset.csv` + `.parquet`,
+  `findroid_bd_<version>_label.csv` + `.parquet`,
   `findroid_bd_<version>_manifest.json` (content-hashed).
-- `reports/`: `distributions.csv`, `review_queue.csv`, `pipeline_summary.md`.
+- `reports/`: `distributions.csv`, `review_queue.csv`, `pipeline_summary.md`,
+  and `pipeline_summary.html`.
 
 ## Known uncertainties
 
@@ -143,22 +144,25 @@ Each phase maps to `pipeline/{01..10}_*.py`; resume via `--phase <name>`.
 
 ## Known inconsistencies (recorded, not silently fixed)
 
-- `static_cert` is a declared group but features are filed under
-  `static_manifest`; schema columns exist, the group is not separately exercised.
-- `dynamic` group is schema-name-only.
-- `configs/project.yaml` declares `output.html_report` and CSVs/parquet toggles;
-  the exporter writes CSV + JSON manifest + label CSV today and **not**
-  parquet/HTML, even though the flags exist.
+- `dynamic` group is schema-name-only (no dynamic detonation implemented).
+- `output.output_json` flag exists but no dataset JSON writer is implemented
+  (the manifest is JSON; that is not a full row export).
 - The review-adjudication phase logs `still_required` — benign reviews are
   never auto-resolved; 65 benign samples remain `REVIEW_REQUIRED` by design.
 - The parent-spec pilot (`findroid_bd_pilot_v0.1.csv`) is a 0.1 pilot with a
   different shape; this repo's schema is the v1.0 contract.
+- Resolved this session: `static_cert` is now a *populated* group
+  (`cert.cn`/`cert.org`/`cert.issuer_cn`/`cert.digest`); `output.parquet`
+  (dataset + label parquet) and `output.html_report`
+  (`reports/pipeline_summary.html`) are now implemented and exercised by the
+  exporter and report phase.
 
 ## Open implementation decisions
 
 - Whether real acquisition (AndroZoo/MalwareBazaar) will be enabled on a
   Java-capable host in a later phase — currently out of scope.
-- Whether `static_cert`/`dynamic` groups will receive extractor support.
-- Whether the exporter will emit parquet/HTML when those flags are used.
+- Whether the `dynamic` group receives extractor support (requires a
+  detonation harness; `analysis.dynamic` remains false by design).
+- Whether `output.output_json` gains a full row-level JSON export.
 - Whether REVIEW_REQUIRED samples are later adjudicated by a human reviewer
   into the release, or remain excluded (current default: excluded).

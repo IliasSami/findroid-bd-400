@@ -26,7 +26,9 @@ that fails G1–G8 (Section 69: "no dataset release before final validation").
 ```
 data/releases/<version>/
   findroid_bd_<version>_dataset.csv      # 400 rows, ROW_CONTRACT + features
+  findroid_bd_<version>_dataset.parquet  # same table (when output.parquet)
   findroid_bd_<version>_label.csv        # per-sample label + confidence + family
+  findroid_bd_<version>_label.parquet    # same (when output.parquet)
   findroid_bd_<version>_manifest.json    # build bookkeeping (below)
 ```
 
@@ -43,6 +45,7 @@ No APK binaries are released — hashes and feature vectors only (AndroZoo terms
 | `gates` | per-gate `passed` / `severity` / `detail` |
 | `config_hash` | pinned config (`AppConfig.config_hash()`) |
 | `content_sha256` | content hash of the release files |
+| `files` | list of non-manifest release files covered by the content hash |
 | `row_count` | 400 |
 | `generated_at` | run timestamp (informational only) |
 

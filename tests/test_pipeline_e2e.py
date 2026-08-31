@@ -7,9 +7,12 @@ exactly 400 rows, 60/40 balance, all eight gates PASS, release files present.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
-from findroid.dataset.export import _active_rows
+import pandas as pd
+
+from findroid.dataset.export import _active_rows, export_release
 from findroid.reporting import render_reports
 from pipeline.run_pipeline import PHASE_ORDER, PHASES, Pipeline
 
@@ -39,8 +42,36 @@ def test_full_pipeline_release(cfg, tmp_path: Path):
         paths = render_reports(pipe.db, cfg, reports_root)
         assert paths["distributions"].exists()
         assert paths["summary"].exists()
+        assert paths["summary_html"].exists()
         summary = paths["summary"].read_text(encoding="utf-8")
         assert "benign" in summary
+    finally:
+        pipe.close()
+
+
+def test_export_writes_csv_parquet_and_hashed_manifest(cfg):
+    pipe = Pipeline(cfg)
+    try:
+        for name in PHASES:
+            getattr(pipe, f"phase_{name}")()
+        version = cfg.version_latest(pipe.db)
+        paths = export_release(pipe.db, cfg, version)
+
+        assert paths["dataset_csv"].exists()
+        assert paths["dataset_parquet"].exists()
+        assert paths["label_parquet"].exists()
+
+        manifest = json.loads(paths["manifest_json"].read_text(encoding="utf-8"))
+        data_files = {p.name for k, p in paths.items() if k != "manifest_json"}
+        assert set(manifest["files"]) == data_files
+        assert len(manifest["content_sha256"]) == 64
+
+        df = pd.read_parquet(paths["dataset_parquet"])
+        assert len(df) == 400
+        assert df["class_label"].value_counts().to_dict() == {"benign": 240, "malicious": 160}
+        # cert features are stored under the static_cert group prefix
+        cert_cols = [c for c in df.columns if c.startswith("static_cert.")]
+        assert any("cert.cn" in c for c in cert_cols), cert_cols
     finally:
         pipe.close()
 
