@@ -8,6 +8,7 @@ Run from the repository root:
     uv run findroid --help
     uv run findroid run            # full pipeline (fresh or resumable)
     uv run findroid run --phase 7  # resume from phase 7
+    uv run findroid baseline       # classifier baseline on the latest release
 """
 
 from __future__ import annotations
@@ -162,6 +163,10 @@ def main(argv: list[str] | None = None) -> int:
         print(__doc__)
         return 0
     cmd = argv.pop(0)
+    if cmd == "baseline":
+        from findroid.experiments.baseline import main as baseline_main
+
+        return baseline_main(argv)
     if cmd == "run":
         start = "init"
         if argv and argv[0] == "--phase":

@@ -10,6 +10,7 @@ static-only, deterministic, mock-first pipeline. Educational / research only.
 uv sync --extra dev          # install the project + dev tooling
 uv run findroid --help       # CLI usage
 uv run findroid run          # full pipeline (init -> reports), resumable
+uv run findroid baseline     # classifier baseline on the latest release
 ```
 
 Individual phases are also runnable as scripts:
@@ -46,7 +47,7 @@ Resume from any phase with `--phase <phase>`, e.g.
 
 ```
 data/releases/<version>/        dataset CSV + label CSV + manifest (content-hashed)
-reports/                        distributions.csv, review_queue.csv, pipeline_summary.md
+reports/                        pipeline reports + baseline JSON/CSV (simulated sanity metrics)
 database/findroid.db            full provenance chain (SQLite, 13 tables)
 samples/                        simulated artifact descriptors (.mockapk.json)
 ```
@@ -61,6 +62,7 @@ samples/                        simulated artifact descriptors (.mockapk.json)
 - `docs/SECURITY.md`, `docs/DATASET_RELEASE.md` — controls and release policy
 - `docs/TROUBLESHOOTING.md`, `docs/QUICKSTART.md`, `docs/INSTALLATION.md`
 - `docs/AGENT_UNDERSTANDING.md` — recorded decisions, uncertainties, open items
+- `docs/BASELINE.md` — classifier sanity check on the mock export (Section 62 compliant)
 
 ## Research integrity
 
