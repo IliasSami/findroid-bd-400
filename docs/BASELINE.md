@@ -2,13 +2,12 @@
 
 ## What this is
 
-A deterministic, holdout-only classifier baseline on the released dataset.
-Its purpose is **engineering validation**: proving that the feature vectors
-carry class signal and the export is usable as ML input. Given that the
-corpus is a SIMULATED pilot — candidate metadata, detections, and labels
-are mock-generated from the seed catalogues — **perfect or near-perfect
-accuracy is expected and means nothing about real-world malware detection
-(MASTER prompt, Section 62).**
+A deterministic, holdout-only classifier **sanity baseline** on the released
+**real** dataset (`v1.0.0`, 311 samples). Its purpose is **engineering
+validation**: proving the static feature vectors carry class signal and the
+export is usable as ML input. It is **not** an empirical malware-detection
+benchmark, and the numbers here must not be cited as a production detection
+result.
 
 ## Run
 
@@ -30,40 +29,39 @@ three reports to `reports/`.
 
 ## Protocol
 
-- Holdout split: **25% stratified random** (`StratifiedShuffleSplit`, seed from
-  `project.random_seed`, maintaining 60/40 benign/malicious ratio).
+- Holdout split: **25% stratified random** (`StratifiedShuffleSplit`, seed
+  `20260831`, preserving the 147/164 benign/malicious ratio).
 - Models: `LogisticRegression(liblinear, class_weight="balanced")` and
   `RandomForest(300 trees, class_weight="balanced_subsample")`.
-- Feature matrix: release CSV minus row-contract + identity/textual columns
-  (`cert.cn`, `cert.digest`, `dex.date`) + `vt_detection` (excluded because
-  labels were derived from it). Constant columns are dropped.
+- Feature matrix: numeric-only columns from the release CSV (row-contract,
+  identity and label-derived columns excluded; constant columns dropped).
 - All numerical inputs are `StandardScaler`-fitted on the train split.
 
-## Features used (15 on v1.1.0)
+## Results on v1.0.0 (real 311 samples, 3 features)
 
-`apk.size_bytes`, `dex.classes`, `dex.methods`, `sdk.min`, `sdk.target`,
-`dex.string_count`, plus 9 `str_ind.*` indicator flags
-(otp/sms/ussd/overlay/accessibility/bank_brand/wallet/payment/credential).
+| Model | Accuracy | Macro F1 |
+|---|---|---|
+| Logistic regression | 0.795 | 0.794 |
+| Random forest | 0.936 | 0.936 |
 
-## Expected results on the current build
-
-Both models achieve **accuracy = 1.0, macro F1 = 1.0** on the mock holdout.
-This is not a finding — it is a consequence of the synthetic provenance
-(`discoverability > proof`), confirming the export produces a usable numeric
-matrix. The confusion matrix is `[[60, 0], [0, 40]]`.
+Features used: `static_manifest.apk.size_bytes`, `static_manifest.sdk.min`,
+`static_manifest.sdk.target`. The feature export carries clear class signal
+(RF ≈ 0.94) despite this being the smallest possible feature set — a
+meaningful sanity check that the real labels and features are usable for ML.
 
 ## Determinism
 
-Two runs with the same seed produce **byte-identical** `baseline_summary.json`.
-Reproducibility is guaranteed by: fixed seed in config, `random_state` on
-all models, identical scaler fit order, and `write_csv` ordering stability.
+Two runs with the same seed produce **byte-identical**
+`baseline_summary.json`. Reproducibility is guaranteed by: fixed seed,
+`random_state` on all models, identical scaler fit order, and `write_csv`
+ordering stability.
 
 ## Known limitations (honesty)
 
-- Not a real malware-detection benchmark. Do not cite these numbers as
-  empirical evidence.
-- No cross-validation or hyperparameter search. This is the simplest
-  possible sanity check.
-- `n_features` is 15 in v1.1.0 (permissions were filtered to distinct set
-  in that release). A v1.0.0 run would report 46 features. The column set
-  is auto-detected from the release CSV.
+- **Not a real malware-detection benchmark** and not a tuned model — no
+  cross-validation or hyperparameter search. Only 3 low-level static features
+  were in the v1.0.0 numeric export, so the baseline is a lower bound.
+- A proper evaluation requires feature engineering (permissions, intents,
+  API calls), cross-validated training, and a held-out independent test set.
+- Baseline numbers are an engineering sanity check, not a claim about
+  detection efficacy in the wild.

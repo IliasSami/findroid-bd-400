@@ -33,8 +33,12 @@ data/validated/
 **/*.apk
 **/*.apk.zip
 
-# Generated reports (regenerate with `findroid run`)
-reports/
+# Generated pipeline reports (regenerate with `findroid run`); keep only the
+# baseline outputs committed as published research artifacts.
+reports/*
+!reports/baseline_summary.json
+!reports/baseline_metrics.csv
+!reports/baseline_predictions.csv
 
 # Logs
 logs/

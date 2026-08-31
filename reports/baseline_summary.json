@@ -1,0 +1,81 @@
+{
+  "disclaimer": "SIMULATED corpus: labels and metadata are mock-generated. These numbers are an engineering sanity check of the feature export, not empirical malware-detection results (MASTER prompt, Section 62).",
+  "feature_columns": [
+    "static_manifest.apk.size_bytes",
+    "static_manifest.sdk.min",
+    "static_manifest.sdk.target"
+  ],
+  "holdout": {
+    "stratified": true,
+    "test_size": 0.25
+  },
+  "models": {
+    "logistic_regression": {
+      "confusion_matrix": [
+        [
+          29,
+          8
+        ],
+        [
+          8,
+          33
+        ]
+      ],
+      "overall": {
+        "accuracy": 0.7948717948717948,
+        "macro_f1": 0.7943309162821358
+      },
+      "per_class": {
+        "benign": {
+          "f1-score": 0.7837837837837838,
+          "precision": 0.7837837837837838,
+          "recall": 0.7837837837837838,
+          "support": 37.0
+        },
+        "malicious": {
+          "f1-score": 0.8048780487804879,
+          "precision": 0.8048780487804879,
+          "recall": 0.8048780487804879,
+          "support": 41.0
+        }
+      }
+    },
+    "random_forest": {
+      "confusion_matrix": [
+        [
+          35,
+          2
+        ],
+        [
+          3,
+          38
+        ]
+      ],
+      "overall": {
+        "accuracy": 0.9358974358974359,
+        "macro_f1": 0.9358024691358025
+      },
+      "per_class": {
+        "benign": {
+          "f1-score": 0.9333333333333333,
+          "precision": 0.9210526315789473,
+          "recall": 0.9459459459459459,
+          "support": 37.0
+        },
+        "malicious": {
+          "f1-score": 0.9382716049382716,
+          "precision": 0.95,
+          "recall": 0.926829268292683,
+          "support": 41.0
+        }
+      }
+    }
+  },
+  "n_features": 3,
+  "n_samples": 311,
+  "release": {
+    "path": "/Users/macmini/Downloads/Datasets for Fintech Cybersecurity/findroid-bd-400/data/releases/v1.0.0/findroid_bd_v1.0.0_dataset.csv",
+    "version": "v1.0.0"
+  },
+  "seed": 20260831
+}

@@ -9,7 +9,7 @@ description = "FinDroid-BD: real-data Android fintech & financial-malware resear
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
-authors = [{ name = "Ilias Sami", email = "https://github.com/IliasSami" }]
+authors = [{ name = "Ilias Sami" }]
 keywords = [
     "android malware dataset",
     "android banking trojan",
