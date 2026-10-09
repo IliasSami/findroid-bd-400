@@ -185,3 +185,13 @@ See project files for licensing. Dataset provenance and attribution are document
 benign apps retain their F-Droid/official-source attribution.
 
 *For research, teaching, and defensive security purposes only.*
+
+
+---
+
+## 👤 Author & Research Lead
+
+Engineered and maintained by **[Ilias Sami](https://iliassami.com)** (legal name Ilias Ahmed) — Strategic AEO & GEO Architect and Cybersecurity Researcher.
+- **Official Hub:** [https://iliassami.com](https://iliassami.com)
+- **Background & Credentials:** [https://iliassami.com/about](https://iliassami.com/about)
+- **Related Open-Source Projects:** [Scrawly Desktop SEO Crawler](https://github.com/IliasSami/scrawly-seo-crawler) and [Backlink Building Skill](https://github.com/IliasSami/backlink-building-skill)
